@@ -1,0 +1,11 @@
+Package: wordsDictionary
+Version: 0.0
+Date: 2017-12-12
+Title: Words Dictionary Generated from txt File and its Utilities
+Authors@R: person("Mengjie", "Wang", role = c("aut", "cre"), email = "mengjie4@illinois.edu")
+Author: Mengjie Wang [aut, cre]
+Maintainer: Mengjie Wang <mengjie4@illinois.edu>
+Description: This package includes functions to create wordsDictionary objects from txt file,
+  access the frequency of the target word, and plot the scatter plot of the dictionary.
+Url: https://github.com/Mengjie4FED/CPSC499
+License: GPL-3
