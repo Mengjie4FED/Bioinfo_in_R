@@ -1,8 +1,5 @@
 wordsDictionary <- function(fileName, removeStopWords = TRUE) {
   # check valid txt file url
-  if (is.null(fileName)) {
-    stop("URL of the file cannot be null.")
-  }
   if (!is.character(fileName)) {
     stop("Please type URL in character.")
   }
@@ -60,7 +57,7 @@ wordsDictionary <- function(fileName, removeStopWords = TRUE) {
   # get the ratio of each word
   wordTable["ratio", ] = wordTable["frequency", ]/length(totalWords)
   
-  # set the class and return value
+  # set the class name and return value
   this = list(bagOfWords = uniqueWords, dictionary = wordTable)
   class(this) <- append(class(this),"wordsDictionary")
   return (this)
@@ -71,9 +68,6 @@ getFrequency = function(object, ...) {
 }
 getFrequency.wordsDictionary = function(object, word, type = "frequency", ...) {
   # some corner cases
-  if (is.null(word)) {
-    stop("Target word cannot be null.")
-  }
   if (!is.character(word)) {
     stop("Target word should be character.")
   }
@@ -81,9 +75,10 @@ getFrequency.wordsDictionary = function(object, word, type = "frequency", ...) {
     stop("type should be character.")
   }
   if (!(type == "frequency" | type == "ratio")) {
-    stop("type should be frequency or ratio")
+    stop("type should be \"frequency\" or \"ratio\".")
   }
   
+  # check whether the target word exists in dictionary
   if (!( word %in% object$bagOfWords)) {
     return("Cannot find this word in dictionary.")
   } else {
@@ -103,6 +98,7 @@ plotDic.wordsDictionary = function(object, yType = "frequency", minFeq = 1, ...)
   if (!(is.numeric(minFeq) & minFeq >= 0)) {
     stop("minFeq should be a positive number.")
   }
+  # check whether the minFeq is out of bound
   if (minFeq > max(object$dictionary["frequency" ,])) {
     stop("No word has bigger frequency. Type in a smaller minFeq.")
   }
@@ -123,7 +119,10 @@ plotDic.wordsDictionary = function(object, yType = "frequency", minFeq = 1, ...)
   labelX1 = labels(labelY1)
   X1 = c(which(wordsX == labelX1[1]), which(wordsX == labelX1[2]), which(wordsX == labelX1[3]))
   
+  # plot, ignore the texts on x axis
   plot(y, xlab = 'words', ylab = yType, main = paste("Plot of words'", yType, sep = " "), xaxt='n')
+  # set the texts on x axis to words
   axis(1, at = 1:length(wordsX), labels = wordsX)
+  # label the top 3 words
   text(X1, labelY1, labelX1, pos = 4)
 }

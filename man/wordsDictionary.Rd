@@ -15,10 +15,11 @@ This package includes functions to create wordsDictionary object for txt file, f
 }
 \usage{
 wordsDictionary(fileName, removeStopWords = TRUE)
-\method{getFrequency}{wordsDictionary}(object, word, type = "frequency", ...)
-\method{plotDic}{wordsDictionary}(object, yType = "frequency", minFeq = 1, ...)
 getFrequency(object, ...)
 plotDic(object, ...)
+\method{getFrequency}{wordsDictionary}(object, word, type = "frequency", ...)
+\method{plotDic}{wordsDictionary}(object, yType = "frequency", minFeq = 1, ...)
+
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -54,7 +55,7 @@ plotDic(object, ...)
   }
   
   \item{...}{
-  Addtional arrguments not used here/
+  Addtional arrguments not used here.
   }
 }
 \details{
