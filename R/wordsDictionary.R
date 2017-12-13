@@ -66,7 +66,9 @@ wordsDictionary <- function(fileName, removeStopWords = TRUE) {
   return (this)
 }
 
-
+getFrequency = function(object, ...) {
+  UseMethod("getFrequency", object)
+}
 getFrequency.wordsDictionary = function(object, word, type = "frequency") {
   # some corner cases
   if (is.null(word)) {
@@ -91,6 +93,9 @@ getFrequency.wordsDictionary = function(object, word, type = "frequency") {
 }
 
 
+plot = function(object, ...) {
+  UseMethod("plot", object)
+}
 plot.wordsDictionary = function(object, yType = "frequency", minFeq = 1) {
   if (!is.character(yType)) {
     stop("yType should be character ( \"frequency\" or \"ratio\").")
@@ -122,17 +127,3 @@ plot.wordsDictionary = function(object, yType = "frequency", minFeq = 1) {
   axis(1, at = 1:length(wordsX), labels = wordsX)
   text(X1, labelY1, labelX1, pos = 4)
 }
-
-
-fileName = "RF.txt"
-a = wordsDictionary(fileName)
-a
-dic =a$dictionary
-word = a$bagOfWords
-# getFrequency(a, "roger")
-getFrequency.wordsDictionary(a, "roger")
-getFrequency.wordsDictionary(a, "roger", "ratio")
-plot.wordsDictionary(a)
-plot.wordsDictionary(a, "sdf", 3)
-
-

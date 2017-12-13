@@ -9,6 +9,7 @@ Create a wordsDictionary Object for txt File.
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This package includes functions to create wordsDictionary object for txt file, find frequency of target word in wordsDictionary and plot words' frequency.
 }
 \usage{
 wordsDictionary(fileName, removeStopWords = TRUE)
@@ -77,10 +78,23 @@ Mengjie Wang
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+# Read in sample txt file, "rf.txt". It is a brief description of Roger Federer copied from Wiki.
+mytxtPath <- system.file("extdata", "rf.txt", package = "wordsDictionary") 
 
+# Create a wordsDictionary object.
+myDictionary <- wordsDictionary(mytxtPath)
+
+# Access the bagOfWords attribute, which is the unique word in this txt file.
+myDictionary$bagOfWords
+
+# Get the frequency of "roger" in txt file.
+getFrequency(myDictionary, "roger")
+
+# Get the ratio of "roger" in txt file.
+getFrequency(myDictionary, "roger", "ratio")
+
+# Plot the words whoes frequency is at least 3.
+plot(myDictionary, minFeq = 3)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
