@@ -1,7 +1,9 @@
 \name{wordsDictionary}
 \alias{wordsDictionary}
+\alias{getFrequency.wordsDictionary}
+\alias{plotDic.wordsDictionary}
 \alias{getFrequency}
-\alias{plot}
+\alias{plotDic}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
@@ -13,8 +15,10 @@ This package includes functions to create wordsDictionary object for txt file, f
 }
 \usage{
 wordsDictionary(fileName, removeStopWords = TRUE)
-getFrequency(object, word, type = "frequency")
-plot(object, yType = "frequency", minFeq = 1)
+\method{getFrequency}{wordsDictionary}(object, word, type = "frequency", ...)
+\method{plotDic}{wordsDictionary}(object, yType = "frequency", minFeq = 1, ...)
+getFrequency(object, ...)
+plotDic(object, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -49,6 +53,9 @@ plot(object, yType = "frequency", minFeq = 1)
   A number, indicating the minimal frequency, which is used to select words above the frequency to be plotted. The default value is 1.
   }
   
+  \item{...}{
+  Addtional arrguments not used here/
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -64,7 +71,7 @@ plot(object, yType = "frequency", minFeq = 1)
 
 \code{getFrequency} returns the frequency of the target word.
 
-\code{plot} draws a plot of the dictionary.
+\code{plotDic} draws a plot of the dictionary.
 }
 
 \author{
@@ -94,7 +101,7 @@ getFrequency(myDictionary, "roger")
 getFrequency(myDictionary, "roger", "ratio")
 
 # Plot the words whoes frequency is at least 3.
-plot(myDictionary, minFeq = 3)
+plotDic(myDictionary, minFeq = 3)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

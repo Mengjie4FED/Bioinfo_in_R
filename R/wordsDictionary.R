@@ -69,7 +69,7 @@ wordsDictionary <- function(fileName, removeStopWords = TRUE) {
 getFrequency = function(object, ...) {
   UseMethod("getFrequency", object)
 }
-getFrequency.wordsDictionary = function(object, word, type = "frequency") {
+getFrequency.wordsDictionary = function(object, word, type = "frequency", ...) {
   # some corner cases
   if (is.null(word)) {
     stop("Target word cannot be null.")
@@ -93,10 +93,10 @@ getFrequency.wordsDictionary = function(object, word, type = "frequency") {
 }
 
 
-plot = function(object, ...) {
-  UseMethod("plot", object)
+plotDic = function(object, ...) {
+  UseMethod("plotDic", object)
 }
-plot.wordsDictionary = function(object, yType = "frequency", minFeq = 1) {
+plotDic.wordsDictionary = function(object, yType = "frequency", minFeq = 1, ...) {
   if (!is.character(yType)) {
     stop("yType should be character ( \"frequency\" or \"ratio\").")
   }

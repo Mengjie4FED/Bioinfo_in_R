@@ -1,3 +1,4 @@
-export(wordsDictionary, getFrequency, plot)
+export(wordsDictionary, getFrequency, plotDic)
+importFrom("graphics", "axis", "plot", "text")
 S3method(getFrequency, wordsDictionary)
-S3method(plot, wordsDictionary)
+S3method(plotDic, wordsDictionary)
