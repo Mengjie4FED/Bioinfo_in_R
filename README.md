@@ -1,1 +1,2 @@
-# CPSC499
+# Progrmg Fund. & Bioinfo. in R
+## CPSC499
